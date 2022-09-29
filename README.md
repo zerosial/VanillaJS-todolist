@@ -10,9 +10,9 @@ https://school.programmers.co.kr/learn/courses/14723﻿
 
 ## 사이트 방문하기
 
-
+https://zerosial.github.io/VanillaJS-todolist/
  
-## 필수 구현사항 #75 
+## 필수 구현사항
 
 - [x] TodoList함수를 TodoList.js라는 이름의 스크립트로 분리
 - [x] new TodoList() 를 실행했던 코드 구문은 index.js 라는 이름의 스크립트로 분리한다.
@@ -21,24 +21,24 @@ https://school.programmers.co.kr/learn/courses/14723﻿
 - [x] 할 일 텍스트를 클릭하면 해당 Todo의 isCompleted 값을 true로 만듭니다.
 - [x]  완료 항목은 사선처리
 
-## 보너스 구현사항 - input 컴포넌트화 하기 #76
+## 보너스 구현사항 - input 컴포넌트화 하기
 
 - [x] TodoInput.js로 할 일을 추가하는 부분을 컴포넌트화
 
-## 보너스 구현 사항 - TodoCount 컴포넌트 #77
+## 보너스 구현 사항 - TodoCount 컴포넌트
 
 - [x] TodoCount 컴포넌트화
 - [x] 총 Todo의 갯수, 완료처리된 Todo의 갯수를 표시
 
-## 보너스 구현사항 - Event delegate #81
+## 보너스 구현사항 - Event delegate
 
 - [x] Event delegate 기법을 이용
 
-## 보너스 구현 사항 - 커스텀 이벤트 #90
+## 보너스 구현 사항 - 커스텀 이벤트
 
 - [x] 입력하는 곳 옆에 버튼을 하나 만듭니다. 이 버튼을 누르면 Todo가 모두 삭제됩니다
 
-## 보너스 구현사항 - localStorage #91
+## 보너스 구현사항 - localStorage
 
 - [x] localStorage를 활용해 todo data가 변경될 때마다 localStorage에 저장하게 합시다.
 
