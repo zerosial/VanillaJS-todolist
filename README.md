@@ -1,5 +1,6 @@
 # VanillaJS-todolist
 
+![chrome_x63OessYO6](https://user-images.githubusercontent.com/97251710/192990763-7574123d-0866-4004-b62c-80bffd121a83.gif)
 
 ## 프로그래머스
 
