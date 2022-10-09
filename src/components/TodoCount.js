@@ -10,11 +10,11 @@ export default function TodoCount(data, $target) {
   this.data = data.get();
 
   this.render = () => {
-    $target.innerHTML = `<a class="font-black">해야할 일의 수는 : ${
+    $target.innerHTML = `<span class="font-black">해야할 일의 수는 : ${
       this.data.filter((e) => !e.isCompleted).length
     } , 완료한 일의 수는 : ${
       this.data.filter((e) => e.isCompleted).length
-    }</a>`;
+    }</span>`;
   };
 
   this.setState = (data) => {

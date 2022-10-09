@@ -9,8 +9,9 @@ export default function TodoInput(data, $target) {
 
   $target.innerHTML = `
     <form class="m-2" id="input-form">
-	    <input class="border-2 border-black rounded-sm" id="todo-input" type="text" placeholder="할일을 입력해 주세요" autofocus />
-	    <button class="ml-4 w-16 h-8 border-4 border-blue-600 bg-blue-300 rounded-md" type="submit">입력</button>
+      <label for="todo-input">Todo</label>
+	    <input class="border-2 border-black rounded-sm w-40" id="todo-input" type="text" placeholder="할일을 입력해 주세요" autofocus />
+	    <button class="ml-2 w-12 h-8 border-4 border-blue-600 bg-blue-300 rounded-md">입력</button>
     </form>
     <button class="border-4 mt-2 w-16 h-8 border-red-600 bg-red-300 rounded-md" id="clear">클리어</button>
   `;

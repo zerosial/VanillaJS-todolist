@@ -21,16 +21,15 @@ export default function TodoList(data, $target) {
         (data, i) =>
           `${
             data.isCompleted
-              ? `<li class="${liStyle} line-through" id="${i}">${data.text}</li><button class="${buttonStyle}" id="${i}">x</button>`
-              : `<li class="${liStyle}" id="${i}">${data.text}</li><button class="${buttonStyle}" id="${i}">x</button>`
+              ? `<li class="${liStyle} line-through" id="${i}">${data.text}</li><button class="${buttonStyle}" id="button-${i}">x</button>`
+              : `<li class="${liStyle}" id="${i}">${data.text}</li><button class="${buttonStyle}" id="button-${i}">x</button>`
           }`
       )
       .join('');
     $target.innerHTML = `<ul class="${ulStyle}">${items}</ul>`;
   };
 
-  $target.addEventListener('click', function (e) {
-    this.data = data.get();
+  $target.addEventListener('click', (e) => {
     if (e.target && e.target.nodeName === 'LI') {
       Object.values(this.data)[e.target.id].isCompleted = !Object.values(
         this.data
