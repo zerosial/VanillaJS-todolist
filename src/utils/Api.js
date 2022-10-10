@@ -1,58 +1,36 @@
-(async function () {
-  const $target = document.querySelector(".App");
+const TODOLIST_API = "https://todo-api.roto.codes/";
 
-  const username = "roto";
+export default async function TodoApi() {
+  try {
+    this.getData = async ({ userName }) => {
+      const res = await fetch(`https://todo-api.roto.codes/${userName}`);
+      return await res.json();
+    };
 
-  async function fetchData() {
-    const res = await fetch(`https://todo-api.roto.codes/${username}`);
-    return await res.json();
-  }
+    this.postData = async ({ todoText, userName }) => {
+      await fetch(`https://todo-api.roto.codes/${userName}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: todoText,
+        }),
+      });
+    };
 
-  const data = await fetchData();
-
-  const todoList = new TodoList({
-    $target,
-    initialState: data,
-    onClick: async function (id) {
-      await fetch(`https://todo-api.roto.codes/${username}/${id}/toggle`, {
+    this.putData = async ({ userName, id }) => {
+      await fetch(`https://todo-api.roto.codes/${userName}/${id}/toggle`, {
         method: "PUT",
       });
+    };
 
-      // 데이터 추가 후 서버에서 목록 다시 불러서 다시 그리기
-      const updatedData = await fetchData();
-      todoList.setState(updatedData);
-    },
-    onRemove: async function (id) {
-      await fetch(`https://todo-api.roto.codes/${username}/${id}`, {
+    this.deleteData = async ({ userName, id }) => {
+      await fetch(`https://todo-api.roto.codes/${userName}/${id}`, {
         method: "DELETE",
       });
-
-      // 데이터 추가 후 서버에서 목록 다시 불러서 다시 그리기
-      const updatedData = await fetchData();
-      todoList.setState(updatedData);
-    },
-  });
-
-  document
-    .querySelector("#add-todo-button")
-    .addEventListener("click", async function () {
-      const todoText = document.querySelector("#todo-input").value;
-
-      if (todoText.length > 0) {
-        // 데이터 추가하기
-        await fetch(`https://todo-api.roto.codes/${username}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            content: todoText,
-          }),
-        });
-
-        // 데이터 추가 후 서버에서 목록 다시 불러서 다시 그리기
-        const updatedData = await fetchData();
-        todoList.setState(updatedData);
-      }
-    });
-})();
+    };
+  } catch (err) {
+    throw new Error("API 통신에 에러가 발생했습니다.", err);
+  }
+}

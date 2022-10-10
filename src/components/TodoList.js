@@ -1,17 +1,17 @@
-import CheckIdError from './CheckError.js';
+import CheckIdError from "../utils/CheckError.js";
 
 export default function TodoList(data, $target) {
   if (!new.target) {
-    throw new Error('생성자 함수 new가 생략되었습니다.');
+    throw new Error("생성자 함수 new가 생략되었습니다.");
   }
 
   CheckIdError($target);
 
   const buttonStyle =
-    'ml-28 border-4 w-12 border-red-700 bg-red-400 rounded-md font-black text-lg';
-  const liStyle = 'font-black border-2 border-red-400 rounded-md w-64 h-10 p-2';
+    "ml-28 border-4 w-12 border-red-700 bg-red-400 rounded-md font-black text-lg";
+  const liStyle = "font-black border-2 border-red-400 rounded-md w-64 h-10 p-2";
   const ulStyle =
-    'grid grid-cols-2 justify-center content-start w-80 h-[40rem] gap-2';
+    "grid grid-cols-2 justify-center content-start w-80 h-[40rem] gap-2";
 
   this.data = data.get();
 
@@ -25,18 +25,18 @@ export default function TodoList(data, $target) {
               : `<li class="${liStyle}" id="${i}">${data.text}</li><button class="${buttonStyle}" id="button-${i}">x</button>`
           }`
       )
-      .join('');
+      .join("");
     $target.innerHTML = `<ul class="${ulStyle}">${items}</ul>`;
   };
 
-  $target.addEventListener('click', (e) => {
-    if (e.target && e.target.nodeName === 'LI') {
+  $target.addEventListener("click", (e) => {
+    if (e.target && e.target.nodeName === "LI") {
       Object.values(this.data)[e.target.id].isCompleted = !Object.values(
         this.data
       )[e.target.id].isCompleted;
     }
 
-    if (e.target && e.target.nodeName === 'BUTTON') {
+    if (e.target && e.target.nodeName === "BUTTON") {
       this.data.splice(e.target.id, 1);
     }
 

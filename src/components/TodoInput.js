@@ -1,8 +1,8 @@
-import CheckIdError from './CheckError.js';
+import CheckIdError from "../utils/CheckError.js";
 
 export default function TodoInput(data, $target) {
   if (!new.target) {
-    throw new Error('생성자 함수 new가 생략되었습니다.');
+    throw new Error("생성자 함수 new가 생략되었습니다.");
   }
 
   CheckIdError($target);
@@ -16,17 +16,17 @@ export default function TodoInput(data, $target) {
     <button class="border-4 mt-2 w-16 h-8 border-red-600 bg-red-300 rounded-md" id="clear">클리어</button>
   `;
 
-  const $todoForm = document.querySelector('#input-form');
-  const $todoInput = document.querySelector('#todo-input');
-  const $todoClear = document.querySelector('#clear');
+  const $todoForm = document.querySelector("#input-form");
+  const $todoInput = document.querySelector("#todo-input");
+  const $todoClear = document.querySelector("#clear");
 
-  $todoForm.addEventListener('submit', (event) => {
+  $todoForm.addEventListener("submit", (event) => {
     event.preventDefault();
     data.add($todoInput.value);
-    $todoInput.value = '';
+    $todoInput.value = "";
   });
 
-  $todoClear.addEventListener('click', (event) => {
+  $todoClear.addEventListener("click", (event) => {
     localStorage.clear();
     data.reRender();
   });

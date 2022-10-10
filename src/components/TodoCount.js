@@ -1,8 +1,8 @@
-import CheckIdError from './CheckError.js';
+import CheckIdError from "../utils/CheckError.js";
 
 export default function TodoCount(data, $target) {
   if (!new.target) {
-    throw new Error('생성자 함수 new가 생략되었습니다.');
+    throw new Error("생성자 함수 new가 생략되었습니다.");
   }
 
   CheckIdError($target);
