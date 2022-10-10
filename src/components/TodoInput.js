@@ -1,4 +1,5 @@
 import CheckIdError from "../utils/CheckError.js";
+import { PostData, DeleteAllData } from "../utils/TodoApi.js";
 
 export default function TodoInput(data, $target) {
   if (!new.target) {
@@ -22,12 +23,16 @@ export default function TodoInput(data, $target) {
 
   $todoForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    data.add($todoInput.value);
+    PostData({
+      todoText: $todoInput.value,
+      userName: "brian",
+    });
     $todoInput.value = "";
+    document.dispatchEvent(new Event("reRender"));
   });
 
-  $todoClear.addEventListener("click", (event) => {
-    localStorage.clear();
-    data.reRender();
+  $todoClear.addEventListener("click", () => {
+    DeleteAllData({ userName: "brian" });
+    document.dispatchEvent(new Event("reRender"));
   });
 }

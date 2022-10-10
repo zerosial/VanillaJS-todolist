@@ -17,7 +17,6 @@ export default function LocaleData() {
           isCompleted: false,
         },
       ]);
-      this.reRender();
     } catch (e) {
       console.log(`todolist 추가에 에러가 발생했습니다. ${e}`);
     }
@@ -26,13 +25,9 @@ export default function LocaleData() {
   this.set = (data) => {
     try {
       localStorage.user = JSON.stringify(data);
-      this.reRender();
+      document.dispatchEvent(new Event("reRender"));
     } catch (e) {
       console.log(`todolist 추가에 에러가 발생했습니다. ${e}`);
     }
-  };
-
-  this.reRender = () => {
-    document.dispatchEvent(new CustomEvent('reRender', {}));
   };
 }

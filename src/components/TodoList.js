@@ -1,4 +1,5 @@
 import CheckIdError from "../utils/CheckError.js";
+import { GetData, DeleteData, PutData } from "../utils/TodoApi.js";
 
 export default function TodoList(data, $target) {
   if (!new.target) {
@@ -13,38 +14,45 @@ export default function TodoList(data, $target) {
   const ulStyle =
     "grid grid-cols-2 justify-center content-start w-80 h-[40rem] gap-2";
 
-  this.data = data.get();
+  this.data = GetData({ userName: "brian" });
 
-  this.render = () => {
-    const items = this.data
+  this.render = async () => {
+    const data = await GetData({ userName: "brian" });
+    const items = data
       .map(
         (data, i) =>
           `${
             data.isCompleted
-              ? `<li class="${liStyle} line-through" id="${i}">${data.text}</li><button class="${buttonStyle}" id="button-${i}">x</button>`
-              : `<li class="${liStyle}" id="${i}">${data.text}</li><button class="${buttonStyle}" id="button-${i}">x</button>`
+              ? `<li class="${liStyle} line-through" id="${data._id}">${data.content}</li><button class="${buttonStyle}" id="${data._id}">x</button>`
+              : `<li class="${liStyle}" id="${data._id}">${data.content}</li><button class="${buttonStyle}" id="${data._id}">x</button>`
           }`
       )
       .join("");
     $target.innerHTML = `<ul class="${ulStyle}">${items}</ul>`;
   };
 
-  $target.addEventListener("click", (e) => {
+  $target.addEventListener("click", async (e) => {
+    const data = await GetData({ userName: "brian" });
+    console.log(data, e.target.id);
     if (e.target && e.target.nodeName === "LI") {
-      Object.values(this.data)[e.target.id].isCompleted = !Object.values(
-        this.data
-      )[e.target.id].isCompleted;
+      PutData({
+        userName: "brian",
+        id: e.target.id,
+      });
     }
 
     if (e.target && e.target.nodeName === "BUTTON") {
-      this.data.splice(e.target.id, 1);
+      DeleteData({
+        userName: "brian",
+        id: e.target.id,
+      });
     }
 
-    data.set(this.data);
+    document.dispatchEvent(new Event("reRender"));
   });
 
-  this.setState = (data) => {
-    this.data = data.get();
+  this.setState = async (data) => {
+    this.data = await GetData({ userName: "brian" });
     this.render();
   };
 }

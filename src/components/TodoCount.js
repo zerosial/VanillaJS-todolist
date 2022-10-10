@@ -1,4 +1,5 @@
 import CheckIdError from "../utils/CheckError.js";
+import { GetData, DeleteData, PutData } from "../utils/TodoApi.js";
 
 export default function TodoCount(data, $target) {
   if (!new.target) {
@@ -7,18 +8,17 @@ export default function TodoCount(data, $target) {
 
   CheckIdError($target);
 
-  this.data = data.get();
+  this.data = GetData({ userName: "brian" });
 
-  this.render = () => {
+  this.render = async () => {
+    const data = await GetData({ userName: "brian" });
     $target.innerHTML = `<span class="font-black">해야할 일의 수는 : ${
-      this.data.filter((e) => !e.isCompleted).length
-    } , 완료한 일의 수는 : ${
-      this.data.filter((e) => e.isCompleted).length
-    }</span>`;
+      data.filter((e) => !e.isCompleted).length
+    } , 완료한 일의 수는 : ${data.filter((e) => e.isCompleted).length}</span>`;
   };
 
-  this.setState = (data) => {
-    this.data = data.get();
+  this.setState = async (data) => {
+    this.data = await GetData({ userName: "brian" });
     this.render();
   };
 }
