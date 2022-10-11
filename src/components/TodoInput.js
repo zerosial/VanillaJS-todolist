@@ -52,6 +52,5 @@ export default function TodoInput({ userName, $target }) {
 
   this.setState = (user) => {
     this.user = user;
-    this.render();
   };
 }

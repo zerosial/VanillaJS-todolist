@@ -5,7 +5,10 @@ export async function GetData({ userName }) {
   if (!res.ok) {
     throw new Error("네트워크 응답이 올바르지 않습니다.");
   }
-  return await res.json();
+  const todoList = await res.json();
+  console.log("[GetData] userName :", userName);
+  console.log("[GetData] data :", todoList);
+  return todoList;
 }
 
 export async function PostData({ todoText, userName }) {

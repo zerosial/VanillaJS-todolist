@@ -25,7 +25,6 @@ export default function App($target) {
     userName: "brian",
     $target: document.querySelector("#todousers"),
   });
-
   const todoInput = new TodoInput({
     userName: "brian",
     $target: document.querySelector("#todoInput"),
@@ -38,8 +37,8 @@ export default function App($target) {
 
   document.addEventListener("reRender", (e) => {
     console.log("rerender", e.detail.todoUsers);
+    todoInput.setState(e.detail.todoUsers);
     todoList.setState(e.detail.todoUsers);
     todoCount.setState(e.detail.todoUsers);
-    todoInput.setState(e.detail.todoUsers);
   });
 }

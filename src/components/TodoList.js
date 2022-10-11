@@ -12,12 +12,12 @@ export default function TodoList({ userName, $target }) {
     "grid grid-cols-2 justify-center content-start w-80 h-[40rem] gap-2";
 
   this.user = userName;
-  console.log(this.user, "todolist, 최상단 this.user");
 
   this.render = async () => {
     const data = await GetData({ userName: this.user });
-    console.log("load todolist", this.user);
-    console.log(data);
+
+    console.log("[TodoList-render] this.user :", this.user);
+    console.log("[TodoList-render] data :", data);
 
     const items = data
       .map(
