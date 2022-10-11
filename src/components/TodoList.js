@@ -6,18 +6,13 @@ export default function TodoList({ userName, $target }) {
   }
 
   const buttonStyle =
-    "ml-28 border-4 w-12 border-red-700 bg-red-400 rounded-md font-black text-lg";
+    "ml-28 border-4 w-12 border-red-700 rounded-md font-black text-lg bg-red-400";
   const liStyle = "font-black border-2 border-red-400 rounded-md w-64 h-10 p-2";
-  const ulStyle =
-    "grid grid-cols-2 justify-center content-start w-80 h-[40rem] gap-2";
 
   this.user = userName;
 
   this.render = async () => {
     const data = await GetData({ userName: this.user });
-
-    console.log("[TodoList-render] this.user :", this.user);
-    console.log("[TodoList-render] data :", data);
 
     const items = data
       .map(
@@ -29,19 +24,19 @@ export default function TodoList({ userName, $target }) {
           }`
       )
       .join("");
-    $target.innerHTML = `<ul class="${ulStyle}">${items}</ul>`;
+    $target.innerHTML = `${items}`;
   };
 
-  $target.addEventListener("click", (e) => {
+  $target.addEventListener("click", async (e) => {
     if (e.target && e.target.nodeName === "LI") {
-      PutData({
+      await PutData({
         userName: this.user,
         id: e.target.id,
       });
     }
 
     if (e.target && e.target.nodeName === "BUTTON") {
-      DeleteData({
+      await DeleteData({
         userName: this.user,
         id: e.target.id,
       });

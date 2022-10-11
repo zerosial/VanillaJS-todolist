@@ -9,8 +9,6 @@ export default function TodoCount({ userName, $target }) {
 
   this.render = async () => {
     const data = await GetData({ userName: this.user });
-    console.log("[TodoCount-render] this.user :", this.user);
-    console.log("[TodoCount-render] data :", data);
     $target.innerHTML = `<span class="font-black">해야할 일의 수는 : ${
       data.filter((e) => !e.isCompleted).length
     } , 완료한 일의 수는 : ${data.filter((e) => e.isCompleted).length}</span>`;

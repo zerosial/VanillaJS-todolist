@@ -4,13 +4,26 @@ import TodoCount from "./components/TodoCount.js";
 import TodoUsers from "./components/TodoUsers.js";
 
 export default function App($target) {
+  const userName = "brian";
+  const buttonStyle =
+    "ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse";
+  const liStyle =
+    "font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse";
+
   $target.innerHTML = `
+  <div class="pl-2 text-2xl text-amber-900 font-black" id="username">사용자 : ${userName}</div>
   <header class="grid grid-flow-col" id="todoInput"></header>
   <main class="flex">
-    <div id="todoList"></div>
+    <ul id="todoList" class="grid grid-cols-2 justify-center content-start w-80 h-[40rem] gap-2">
+      <li class="${liStyle}"></li><button class="${buttonStyle}">x</button>
+      <li class="${liStyle}"></li><button class="${buttonStyle}">x</button>
+      <li class="${liStyle}"></li><button class="${buttonStyle}">x</button>
+    </ul>
     <div id="todousers"></div>
   </main>
-  <footer id="todoCount"></footer>
+  <footer id="todoCount"> 
+    <div class="ml-4 font-black animate-pulse text-center w-72 rounded-lg bg-gray-400 border-2 border-gray-300">할일 로딩중</div>
+  </footer>
   `;
 
   const todoList = new TodoList({
@@ -30,13 +43,14 @@ export default function App($target) {
     $target: document.querySelector("#todoInput"),
   });
 
-  todoInput.render();
   todoList.render();
   todoCount.render();
   todoUsers.render();
 
   document.addEventListener("reRender", (e) => {
-    console.log("rerender", e.detail.todoUsers);
+    document.querySelector(
+      "#username"
+    ).innerHTML = `<div id="username">사용자 : ${e.detail.todoUsers}</div>`;
     todoInput.setState(e.detail.todoUsers);
     todoList.setState(e.detail.todoUsers);
     todoCount.setState(e.detail.todoUsers);
