@@ -5,19 +5,15 @@ import TodoUsers from "./components/TodoUsers.js";
 
 export default function App($target) {
   const userName = "brian";
-  const buttonStyle =
-    "ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse";
-  const liStyle =
-    "font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse";
 
   $target.innerHTML = `
   <div class="pl-2 text-2xl text-amber-900 font-black" id="username">사용자 : ${userName}</div>
   <header class="grid grid-flow-col" id="todoInput"></header>
   <main class="flex">
     <ul id="todoList" class="grid grid-cols-2 justify-center content-start w-80 h-[40rem] gap-2">
-      <li class="${liStyle}"></li><button class="${buttonStyle}">x</button>
-      <li class="${liStyle}"></li><button class="${buttonStyle}">x</button>
-      <li class="${liStyle}"></li><button class="${buttonStyle}">x</button>
+      <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+      <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+      <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
     </ul>
     <div id="todousers"></div>
   </main>

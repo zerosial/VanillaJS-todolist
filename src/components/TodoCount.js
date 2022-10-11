@@ -8,6 +8,7 @@ export default function TodoCount({ userName, $target }) {
   this.user = userName;
 
   this.render = async () => {
+    $target.innerHTML = `<div class="ml-4 font-black animate-pulse text-center w-72 rounded-lg bg-gray-400 border-2 border-gray-300">할일 로딩중</div>`;
     const data = await GetData({ userName: this.user });
     $target.innerHTML = `<span class="font-black">해야할 일의 수는 : ${
       data.filter((e) => !e.isCompleted).length

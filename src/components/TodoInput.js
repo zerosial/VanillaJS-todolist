@@ -22,24 +22,23 @@ export default function TodoInput({ userName, $target }) {
 
   $todoForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    document.dispatchEvent(
+      new CustomEvent("reRender", {
+        detail: {
+          todoUsers: this.user,
+        },
+      })
+    );
+
     await PostData({
       todoText: $todoInput.value,
       userName: this.user,
     });
 
     $todoInput.value = "";
-
-    document.dispatchEvent(
-      new CustomEvent("reRender", {
-        detail: {
-          todoUsers: this.user,
-        },
-      })
-    );
   });
 
   $todoClear.addEventListener("click", async () => {
-    await DeleteAllData({ userName: this.user });
     document.dispatchEvent(
       new CustomEvent("reRender", {
         detail: {
@@ -47,6 +46,8 @@ export default function TodoInput({ userName, $target }) {
         },
       })
     );
+
+    await DeleteAllData({ userName: this.user });
   });
 
   this.setState = (user) => {
