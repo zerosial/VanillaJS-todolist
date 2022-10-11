@@ -1,7 +1,7 @@
 const TODOLIST_API = "https://todo-api.roto.codes/";
 
 export async function GetData({ userName }) {
-  const res = await fetch(`https://todo-api.roto.codes/${userName}`);
+  const res = await fetch(`https://todo-api.roto.codes/${userName}?delay=1000`);
   if (!res.ok) {
     throw new Error("네트워크 응답이 올바르지 않습니다.");
   }

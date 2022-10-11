@@ -14,6 +14,12 @@ export default function TodoList({ userName, $target }) {
   this.render = async () => {
     $target.innerHTML = `<li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
     <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
     <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>`;
     const data = await GetData({ userName: this.user });
     console.log(this.user, data);
@@ -31,14 +37,6 @@ export default function TodoList({ userName, $target }) {
   };
 
   $target.addEventListener("click", async (e) => {
-    document.dispatchEvent(
-      new CustomEvent("reRender", {
-        detail: {
-          todoUsers: this.user,
-        },
-      })
-    );
-
     if (e.target && e.target.nodeName === "LI") {
       await PutData({
         userName: this.user,
@@ -52,6 +50,14 @@ export default function TodoList({ userName, $target }) {
         id: e.target.id,
       });
     }
+
+    document.dispatchEvent(
+      new CustomEvent("reRender", {
+        detail: {
+          todoUsers: this.user,
+        },
+      })
+    );
   });
 
   this.setState = (user) => {

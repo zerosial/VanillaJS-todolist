@@ -22,13 +22,6 @@ export default function TodoInput({ userName, $target }) {
 
   $todoForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    document.dispatchEvent(
-      new CustomEvent("reRender", {
-        detail: {
-          todoUsers: this.user,
-        },
-      })
-    );
 
     await PostData({
       todoText: $todoInput.value,
@@ -36,9 +29,6 @@ export default function TodoInput({ userName, $target }) {
     });
 
     $todoInput.value = "";
-  });
-
-  $todoClear.addEventListener("click", async () => {
     document.dispatchEvent(
       new CustomEvent("reRender", {
         detail: {
@@ -46,8 +36,18 @@ export default function TodoInput({ userName, $target }) {
         },
       })
     );
+  });
 
+  $todoClear.addEventListener("click", async () => {
     await DeleteAllData({ userName: this.user });
+
+    document.dispatchEvent(
+      new CustomEvent("reRender", {
+        detail: {
+          todoUsers: this.user,
+        },
+      })
+    );
   });
 
   this.setState = (user) => {

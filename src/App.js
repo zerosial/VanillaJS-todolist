@@ -14,6 +14,12 @@ export default function App($target) {
       <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
       <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
       <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+      <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+      <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+      <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+      <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+      <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
+      <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
     </ul>
     <div id="todousers"></div>
   </main>
