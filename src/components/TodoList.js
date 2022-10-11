@@ -6,38 +6,52 @@ export default function TodoList({ userName, $target }) {
   }
 
   const buttonStyle =
-    "ml-28 border-4 w-12 border-red-700 rounded-md font-black text-lg bg-red-400";
-  const liStyle = "font-black border-2 border-red-400 rounded-md w-64 h-10 p-2";
+    "ml-8 border-4 w-10 border-red-700 rounded-md font-black text-lg bg-red-400";
+  const liStyle =
+    "font-black border-2 border-red-400 rounded-md w-56 h-10 p-2 inline-block";
 
   this.user = userName;
 
   this.render = async () => {
-    $target.innerHTML = `<li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
-    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
-    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
-    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
-    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
-    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
-    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
-    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>
-    <li class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-64 h-10 p-2 animate-pulse"></li><button class="ml-28 border-4 w-12 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button>`;
+    $target.innerHTML = `
+    <div>완료 리스트</div>
+    <div class="h-[19rem]">
+    <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+      <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    </div>
+    <div>미완료 리스트</div>
+    <div class="h-[19rem]">
+      <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+      <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+      <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    </div>
+    `;
     const data = await GetData({ userName: this.user });
-    console.log(this.user, data);
-    const items = data
-      .map(
-        (data, i) =>
-          `${
-            data.isCompleted
-              ? `<li class="${liStyle} line-through" id="${data._id}">${data.content}</li><button class="${buttonStyle}" id="${data._id}">x</button>`
-              : `<li class="${liStyle}" id="${data._id}">${data.content}</li><button class="${buttonStyle}" id="${data._id}">x</button>`
-          }`
-      )
-      .join("");
-    $target.innerHTML = `${items}`;
+    let doneTodo = "";
+    let doingTodo = "";
+    data.map(
+      (data) =>
+        `${
+          data.isCompleted
+            ? (doneTodo += `<li class="mt-1"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
+            : (doingTodo += `<li class="mt-1"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
+        }`
+    );
+
+    $target.innerHTML = `
+    <div>완료 리스트</div>
+    <div class="h-[19rem]">${doneTodo}</div>
+    <div>미완료 리스트</div>
+    <div class="h-[19rem]">${doingTodo}</div>
+    `;
   };
 
   $target.addEventListener("click", async (e) => {
-    if (e.target && e.target.nodeName === "LI") {
+    console.log(e.target, e.target.nodeName);
+    if (e.target && e.target.nodeName === "SPAN") {
       await PutData({
         userName: this.user,
         id: e.target.id,
