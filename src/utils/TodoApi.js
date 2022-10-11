@@ -1,5 +1,4 @@
 const TODOLIST_API = "https://todo-api.roto.codes/";
-const userName = "brian";
 
 export async function GetData({ userName }) {
   const res = await fetch(`https://todo-api.roto.codes/${userName}`);
@@ -49,4 +48,12 @@ export async function DeleteAllData({ userName }) {
   if (!res.ok) {
     throw new Error("네트워크 응답이 올바르지 않습니다.");
   }
+}
+
+export async function GetUser() {
+  const res = await fetch(`https://todo-api.roto.codes/users`);
+  if (!res.ok) {
+    throw new Error("네트워크 응답이 올바르지 않습니다.");
+  }
+  return await res.json();
 }

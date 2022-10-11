@@ -1,12 +1,9 @@
-import CheckIdError from "../utils/CheckError.js";
 import { GetData, DeleteData, PutData } from "../utils/TodoApi.js";
 
-export default function TodoList(data, $target) {
+export default function TodoList({ userName, $target }) {
   if (!new.target) {
     throw new Error("생성자 함수 new가 생략되었습니다.");
   }
-
-  CheckIdError($target);
 
   const buttonStyle =
     "ml-28 border-4 w-12 border-red-700 bg-red-400 rounded-md font-black text-lg";
@@ -14,10 +11,14 @@ export default function TodoList(data, $target) {
   const ulStyle =
     "grid grid-cols-2 justify-center content-start w-80 h-[40rem] gap-2";
 
-  this.data = GetData({ userName: "brian" });
+  this.user = userName;
+  console.log(this.user, "todolist, 최상단 this.user");
 
   this.render = async () => {
-    const data = await GetData({ userName: "brian" });
+    const data = await GetData({ userName: this.user });
+    console.log("load todolist", this.user);
+    console.log(data);
+
     const items = data
       .map(
         (data, i) =>
@@ -31,28 +32,32 @@ export default function TodoList(data, $target) {
     $target.innerHTML = `<ul class="${ulStyle}">${items}</ul>`;
   };
 
-  $target.addEventListener("click", async (e) => {
-    const data = await GetData({ userName: "brian" });
-    console.log(data, e.target.id);
+  $target.addEventListener("click", (e) => {
     if (e.target && e.target.nodeName === "LI") {
       PutData({
-        userName: "brian",
+        userName: this.user,
         id: e.target.id,
       });
     }
 
     if (e.target && e.target.nodeName === "BUTTON") {
       DeleteData({
-        userName: "brian",
+        userName: this.user,
         id: e.target.id,
       });
     }
 
-    document.dispatchEvent(new Event("reRender"));
+    document.dispatchEvent(
+      new CustomEvent("reRender", {
+        detail: {
+          todoUsers: this.user,
+        },
+      })
+    );
   });
 
-  this.setState = async (data) => {
-    this.data = await GetData({ userName: "brian" });
+  this.setState = (user) => {
+    this.user = user;
     this.render();
   };
 }
