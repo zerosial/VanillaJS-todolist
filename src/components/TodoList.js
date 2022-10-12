@@ -36,21 +36,35 @@ export default function TodoList({ userName, $target }) {
       (data) =>
         `${
           data.isCompleted
-            ? (doneTodo += `<li class="m-1"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
-            : (doingTodo += `<li class="m-1"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
+            ? (doneTodo += `<li class="m-1" id="draggable"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
+            : (doingTodo += `<li class="m-1" id="draggable"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
         }`
     );
 
     $target.innerHTML = `
     <div>완료 리스트</div>
-    <div class="h-[19rem] border-2 border-red-700 rounded-lg w-[19rem]">${doneTodo}</div>
+    <div class="h-[19rem] border-2 border-red-700 rounded-lg w-[19rem]" id="container">${doneTodo}</div>
     <div>미완료 리스트</div>
-    <div class="h-[19rem] border-2 border-red-700 rounded-lg w-[19rem]">${doingTodo}</div>
+    <div class="h-[19rem] border-2 border-red-700 rounded-lg w-[19rem]" id="container">${doingTodo}</div>
     `;
+
+    document.querySelectorAll("#draggable").forEach((el) => {
+      // 드래그엔 드롭 이벤트 제작중
+      console.log(el);
+      el.addEventListener("dragstart", (e) => {
+        console.log(e.target, e.target.id, "dragstart");
+      });
+      el.addEventListener("dragend", (e) => {
+        console.log(e.target, e.target.id, "dragend");
+      });
+      /* el.addEventListener("dragover", async (e) => {
+        console.log(e.target, e.target.id, "dragover");
+      }); */
+    });
   };
 
-  $target.addEventListener("click", async (e) => {
-    console.log(e.target, e.target.nodeName);
+  $target.addEventListener("mouseup", async (e) => {
+    console.log(e.target, e.target.id);
     if (e.target && e.target.nodeName === "SPAN") {
       await PutData({
         userName: this.user,
