@@ -1,31 +1,20 @@
 export default function LocaleData() {
-  this.get = () => {
+  this.get = (data) => {
     try {
-      const data = localStorage.user ? JSON.parse(localStorage.user) : [];
-      return data;
+      const list = localStorage.getItem(data);
+      return list;
     } catch (e) {
       console.log(`parse 에러가 발생했습니다.${e}`);
     }
   };
 
-  this.add = (inputData) => {
-    try {
-      localStorage.user = JSON.stringify([
-        ...this.get(),
-        {
-          text: inputData,
-          isCompleted: false,
-        },
-      ]);
-    } catch (e) {
-      console.log(`todolist 추가에 에러가 발생했습니다. ${e}`);
-    }
-  };
-
   this.set = (data) => {
     try {
-      localStorage.user = JSON.stringify(data);
-      document.dispatchEvent(new Event("reRender"));
+      if (localStorage.getItem(data)) {
+        localStorage.removeItem(data);
+      } else {
+        localStorage.setItem(data, true);
+      }
     } catch (e) {
       console.log(`todolist 추가에 에러가 발생했습니다. ${e}`);
     }
