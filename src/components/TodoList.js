@@ -6,7 +6,7 @@ export default function TodoList({ userName, $target }) {
   }
 
   const buttonStyle =
-    "ml-8 border-4 w-10 border-red-700 rounded-md font-black text-lg bg-red-400";
+    "ml-7 border-4 w-10 border-red-700 rounded-md font-black text-lg bg-red-400";
   const liStyle =
     "font-black border-2 border-red-400 rounded-md w-56 h-10 p-2 inline-block";
 
@@ -15,18 +15,18 @@ export default function TodoList({ userName, $target }) {
   this.render = async () => {
     $target.innerHTML = `
     <div>완료 리스트</div>
-    <div class="h-[19rem]">
-    <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-    <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-      <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-    <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    <div class="h-[19rem] border-2 border-red-700 rounded-lg">
+    <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
     </div>
     <div>미완료 리스트</div>
-    <div class="h-[19rem]">
-      <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-    <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-      <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-      <li class="mt-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    <div class="h-[19rem] border-2 border-red-700 rounded-lg">
+      <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+      <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+      <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+      <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-8 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
     </div>
     `;
     const data = await GetData({ userName: this.user });
@@ -36,16 +36,16 @@ export default function TodoList({ userName, $target }) {
       (data) =>
         `${
           data.isCompleted
-            ? (doneTodo += `<li class="mt-1"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
-            : (doingTodo += `<li class="mt-1"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
+            ? (doneTodo += `<li class="m-1"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
+            : (doingTodo += `<li class="m-1"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
         }`
     );
 
     $target.innerHTML = `
     <div>완료 리스트</div>
-    <div class="h-[19rem]">${doneTodo}</div>
+    <div class="h-[19rem] border-2 border-red-700 rounded-lg w-[19rem]">${doneTodo}</div>
     <div>미완료 리스트</div>
-    <div class="h-[19rem]">${doingTodo}</div>
+    <div class="h-[19rem] border-2 border-red-700 rounded-lg w-[19rem]">${doingTodo}</div>
     `;
   };
 
