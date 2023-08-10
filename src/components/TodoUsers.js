@@ -1,29 +1,29 @@
-import { GetUser } from '../utils/TodoApi.js';
-import LocaleData from '../utils/LocaleData.js';
+import { GetUser } from "../utils/TodoApi.js";
+import LocaleData from "../utils/LocaleData.js";
 
 export default function TodoUsers({ userName, $target }) {
   if (!new.target) {
-    throw new Error('생성자 함수 new가 생략되었습니다.');
+    throw new Error("생성자 함수 new가 생략되었습니다.");
   }
 
   this.user = userName;
   this.pages = 0;
   this.max;
-  this.select = 'all';
+  this.select = "all";
 
   const localeData = new LocaleData();
 
   this.render = async () => {
     const data = await GetUser();
     let items;
-    if (this.select === 'all') {
+    if (this.select === "all") {
       this.max = data.length;
       items = data
         .map(
           (data) =>
             `<li class="flex justify-between border-2 pl-2 pr-2 border-red-500 bg-orange-200 rounded-lg w-[22rem] id="userlist">
             <div id="${data}" class="w-80 inline-block text-center">
-             ${data}
+              ${data}
             </div>
             ${
               localeData.get(data)
@@ -33,9 +33,9 @@ export default function TodoUsers({ userName, $target }) {
           </li>`
         )
         .slice(this.pages, this.pages + 13)
-        .join('');
+        .join("");
     }
-    if (this.select === 'likes') {
+    if (this.select === "likes") {
       this.max = data.length;
       let arr = [];
       for (var i = 0; i < localStorage.length; i++) {
@@ -52,7 +52,7 @@ export default function TodoUsers({ userName, $target }) {
         </li>`
         )
         .slice(this.pages, this.pages + 13)
-        .join('');
+        .join("");
     }
 
     $target.innerHTML = `<div class="absolute flex w-96 ml-20 pl-4 h-[36rem] border-2 border-red-500 bg-orange-200 rounded-lg">
@@ -81,29 +81,29 @@ export default function TodoUsers({ userName, $target }) {
       </div>`;
   };
 
-  $target.addEventListener('submit', (e) => {
+  $target.addEventListener("submit", (e) => {
     e.preventDefault();
     if (
       e.target &&
-      e.target.nodeName === 'FORM' &&
-      e.target.id === 'user-form'
+      e.target.nodeName === "FORM" &&
+      e.target.id === "user-form"
     ) {
       document.dispatchEvent(
-        new CustomEvent('reRender', {
+        new CustomEvent("reRender", {
           detail: {
-            todoUsers: document.querySelector('#user-name').value,
+            todoUsers: document.querySelector("#user-name").value,
           },
         })
       );
     }
   });
 
-  $target.addEventListener('change', (e) => {
+  $target.addEventListener("change", (e) => {
     e.preventDefault();
     if (
       e.target &&
-      e.target.nodeName === 'SELECT' &&
-      e.target.id === 'select'
+      e.target.nodeName === "SELECT" &&
+      e.target.id === "select"
     ) {
       this.select = e.target.value;
       this.pages = 0;
@@ -111,14 +111,14 @@ export default function TodoUsers({ userName, $target }) {
     }
   });
 
-  $target.addEventListener('click', async (e) => {
+  $target.addEventListener("click", async (e) => {
     if (
       e.target &&
-      e.target.nodeName === 'DIV' &&
-      e.target.id.indexOf('favorite') === -1
+      e.target.nodeName === "DIV" &&
+      e.target.id.indexOf("favorite") === -1
     ) {
       document.dispatchEvent(
-        new CustomEvent('reRender', {
+        new CustomEvent("reRender", {
           detail: {
             todoUsers: e.target.id,
           },
@@ -128,28 +128,28 @@ export default function TodoUsers({ userName, $target }) {
 
     if (
       e.target &&
-      e.target.nodeName === 'DIV' &&
-      e.target.id.indexOf('favorite') !== -1
+      e.target.nodeName === "DIV" &&
+      e.target.id.indexOf("favorite") !== -1
     ) {
       localeData.set(e.target.className);
 
-      if (e.target.id === 'notfavorite') {
-        e.target.innerHTML = '❤️';
-        e.target.id = 'favorite';
-      } else if (e.target.id === 'favorite') {
-        e.target.innerHTML = '🤍';
-        e.target.id = 'notfavorite';
+      if (e.target.id === "notfavorite") {
+        e.target.innerHTML = "❤️";
+        e.target.id = "favorite";
+      } else if (e.target.id === "favorite") {
+        e.target.innerHTML = "🤍";
+        e.target.id = "notfavorite";
       }
       this.render();
     }
 
-    if (e.target && e.target.nodeName === 'BUTTON' && e.target.id === 'left') {
+    if (e.target && e.target.nodeName === "BUTTON" && e.target.id === "left") {
       this.pages = this.pages - 13;
       if (this.pages < 0) this.pages = 0;
       this.render();
     }
 
-    if (e.target && e.target.nodeName === 'BUTTON' && e.target.id === 'right') {
+    if (e.target && e.target.nodeName === "BUTTON" && e.target.id === "right") {
       this.pages = this.pages + 13;
       if (this.pages >= this.max) this.pages = this.max - 13;
       this.render();
