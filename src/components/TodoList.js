@@ -63,6 +63,7 @@ export default function TodoList({ userName, $target }) {
   };
 
   $target.addEventListener("mouseup", async (e) => {
+    console.log(e.target, e.target.nodeName);
     if (e.target && e.target.nodeName === "SPAN") {
       await PutData({
         userName: this.user,
@@ -77,13 +78,15 @@ export default function TodoList({ userName, $target }) {
       });
     }
 
-    document.dispatchEvent(
-      new CustomEvent("reRender", {
-        detail: {
-          todoUsers: this.user,
-        },
-      })
-    );
+    if (e.target && e.target.nodeName !== "DIV") {
+      document.dispatchEvent(
+        new CustomEvent("reRender", {
+          detail: {
+            todoUsers: this.user,
+          },
+        })
+      );
+    }
   });
 
   this.setState = (user) => {
