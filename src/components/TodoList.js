@@ -16,17 +16,11 @@ export default function TodoList({ userName, $target }) {
     $target.innerHTML = `
     <div>완료 리스트</div>
     <div class="h-[19rem] border-2 border-red-700 rounded-lg">
-    <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-7 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-    <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-7 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-    <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-7 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-    <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-7 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    <div class="m-1"><span class="font-black border-2 border-gray-700 bg-gray-400 rounded-md w-72 h-72 p-2 animate-pulse inline-block">로딩중</span></div>
     </div>
     <div>미완료 리스트</div>
     <div class="h-[19rem] border-2 border-red-700 rounded-lg">
-      <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-7 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-      <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-7 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-      <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-7 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
-      <li class="m-1"><span class="font-black border-2 border-gray-300 bg-gray-400 rounded-md w-56 h-10 p-2 animate-pulse inline-block">로딩중</span><button class="ml-7 border-4 w-10 border-gray-300 bg-gray-400 rounded-md font-black text-lg animate-pulse">x</button></li>
+    <div class="m-1"><span class="font-black border-2 border-gray-700 bg-gray-400 rounded-md w-72 h-72 p-2 animate-pulse inline-block">로딩중</span></div>
     </div>
     `;
     const data = await GetData({ userName: this.user });
@@ -36,8 +30,8 @@ export default function TodoList({ userName, $target }) {
       (data) =>
         `${
           data.isCompleted
-            ? (doneTodo += `<li class="m-1" id="draggable"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
-            : (doingTodo += `<li class="m-1" id="draggable"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
+            ? (doneTodo += `<li class="m-1"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
+            : (doingTodo += `<li class="m-1"><span class="${liStyle}" id="${data._id}">${data.content}</span><button class="${buttonStyle}" id="${data._id}">x</button></li>`)
         }`
     );
 
@@ -47,19 +41,6 @@ export default function TodoList({ userName, $target }) {
     <div>미완료 리스트</div>
     <div class="h-[19rem] border-2 border-red-700 rounded-lg w-[19rem]" id="container">${doingTodo}</div>
     `;
-
-    document.querySelectorAll("#draggable").forEach((el) => {
-      // 드래그엔 드롭 이벤트 제작중
-      el.addEventListener("dragstart", (e) => {
-        console.log(e.target, e.target.id, "dragstart");
-      });
-      el.addEventListener("dragend", (e) => {
-        console.log(e.target, e.target.id, "dragend");
-      });
-      /* el.addEventListener("dragover", async (e) => {
-        console.log(e.target, e.target.id, "dragover");
-      }); */
-    });
   };
 
   $target.addEventListener("mouseup", async (e) => {
